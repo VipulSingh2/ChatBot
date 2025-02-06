@@ -4,3 +4,4 @@ langchain
 transformers
 torch
 tensorflow
+accelerate
