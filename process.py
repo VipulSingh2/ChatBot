@@ -16,11 +16,16 @@ def chunks(text):
     # docs=None
     docs = [Document(page_content=text)]
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=512,chunk_overlap=50)
-    chunks = text_splitter.split_documents(text_splitter)
-    return chunks
+    chunked_docs = text_splitter.split_documents(text_splitter)
+    return chunked_docs
 def answer_question_from_chunk(chunks,question):
-    result = pipe({
-        'context'=chunks,
-        'question':question
-            })
-    return result['answer']
+   # result = pipe({
+        #'context'=chunks,
+        #'question':question
+           # })
+   # return result['answer']
+    context = "\n".join([chunk.page_content for chunk in chunks])  # Combine chunk texts
+    prompt = f"Context: {context}\n\nQuestion: {question}\n\nAnswer:"
+    
+    result = pipe(prompt, max_length=200, temperature=0.7)
+    return result[0]["generated_text"].split("Answer:")[-1].strip()  
