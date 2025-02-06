@@ -1,8 +1,8 @@
-streamlit
-pdfplumber
+streamlit 
 transformers
 torch
+sentencepiece
 accelerate
-sentence_transformers
-langchain
 tf-keras
+langchain_community
+pdfplumber
