@@ -2,3 +2,5 @@ streamlit
 pdfplumber
 langchain
 transformers
+torch
+tensorflow
