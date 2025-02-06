@@ -34,7 +34,7 @@ if prompt:= st.chat_input("Ask a question about the document:"):
     if chunks:
         response = process.anwer_question_from_chunks(chunks,prompt)
     else:
-        response = "No document uploaded. Please upload a PDF first
+        response = "No document uploaded. Please upload a PDF first"
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
