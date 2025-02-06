@@ -5,6 +5,7 @@ import process
 st.sidebar.title("ChatBot Example")
 file = st.sidebar.file_uploader("Upload a file",type="PDF")
 text = None
+chunks = None
 
 # Extract text from PDF if fiel is uploaded
 if file is not None:
@@ -28,7 +29,11 @@ if prompt:= st.chat_input("Ask a question about the document:"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    response = f"Echo: {prompt}"
+    # response = f"Echo: {prompt}"
+    if chunks:
+        response = process.anwer_question_from_chunks(chunks,prompt)
+    else:
+        response = "No document uploaded. Please upload a PDF first
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
