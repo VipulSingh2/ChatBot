@@ -9,7 +9,8 @@ def extracted_text(file):
     with pdfplumber.open(file) as pdf:
         text = ""
         for page in pdf.pages:
-            text +=page.extract_text() +"\n"
+            # text +=page.extract_text() +"\n"
+            text = "\n".join(page.extract_text() for page in pdf.pages if page.extract_text())
     return text
 
 def chunks(text):
