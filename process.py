@@ -2,8 +2,10 @@ import pdfplumber
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
 tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1",token = "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")
+model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1",use_auth_token = "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")
 pipe = pipeline("text-generation", model="mistralai/Mistral-7B-Instruct-v0.1",device_map="auto",torch_dtype="auto")
 def extracted_text(file):
 
