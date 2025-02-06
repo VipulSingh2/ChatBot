@@ -18,4 +18,9 @@ def chunks(text):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=512,chunk_overlap=50)
     chunks = text_splitter.split_documents(text_splitter)
     return chunks
-
+def answer_question_from_chunk(chunks,question):
+    result = pipe({
+        'context'=chunks,
+        'question':question
+            })
+    return result['answer']
