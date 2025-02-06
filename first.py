@@ -10,6 +10,7 @@ chunks = None
 # Extract text from PDF if fiel is uploaded
 if file is not None:
     text = process.extracted_text(file)
+    chunks = process.chunks(text)
     st.text_area("Extracted Text",text,height = 300)
 
 # Initialize chat history
